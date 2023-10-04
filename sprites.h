@@ -2,6 +2,9 @@
 #ifndef SPRITES_H
 #define SPRITES_H
 
+#define MISSILE_RIGHT(y, x) (move(y, x), printw("▖"), move(y +1, x), printw("▘")) /* Shoots missile to the right direction */
+#define MISSILE_LEFT(y, x) (move(y, x), printw("▗"), move(y +1, x), printw("▝")) /* Shoots missile to the left direction */
+
 #include <ncurses.h>
 
 enum directions {
