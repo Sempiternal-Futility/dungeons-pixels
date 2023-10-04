@@ -24,31 +24,63 @@ void move_player()
       input = getch();
 
       if (input == 'w') {
-         erase_player(playerPosY, playerPosX, currentDir);
-         playerPosY -= 1;
-         currentDir = up;
-         draw_player(playerPosY, playerPosX, currentDir);
+         if (playerPosY > 1) {
+            erase_player(playerPosY, playerPosX, currentDir);
+            playerPosY -= 1;
+            currentDir = up;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
+
+         else {
+            erase_player(playerPosY, playerPosX, currentDir);
+            currentDir = up;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
       }
 
       else if (input == 'd') {
-         erase_player(playerPosY, playerPosX, currentDir);
-         playerPosX += 2;
-         currentDir = right;
-         draw_player(playerPosY, playerPosX, currentDir);
+         if (playerPosX < COLS -3) {
+            erase_player(playerPosY, playerPosX, currentDir);
+            playerPosX += 2;
+            currentDir = right;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
+
+         else {
+            erase_player(playerPosY, playerPosX, currentDir);
+            currentDir = right;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
       }
 
       else if (input == 'a') {
-         erase_player(playerPosY, playerPosX, currentDir);
-         playerPosX -= 2;
-         currentDir = left;
-         draw_player(playerPosY, playerPosX, currentDir);
+         if (playerPosX > 2) {
+            erase_player(playerPosY, playerPosX, currentDir);
+            playerPosX -= 2;
+            currentDir = left;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
+
+         else {
+            erase_player(playerPosY, playerPosX, currentDir);
+            currentDir = left;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
       }
 
       else if (input == 's') {
-         erase_player(playerPosY, playerPosX, currentDir);
-         playerPosY += 1;
-         currentDir = down;
-         draw_player(playerPosY, playerPosX, currentDir);
+         if (playerPosY < LINES -3) {
+            erase_player(playerPosY, playerPosX, currentDir);
+            playerPosY += 1;
+            currentDir = down;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
+
+         else {
+            erase_player(playerPosY, playerPosX, currentDir);
+            currentDir = down;
+            draw_player(playerPosY, playerPosX, currentDir);
+         }
       }
    }
 }
