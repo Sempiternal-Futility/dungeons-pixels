@@ -1,7 +1,6 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <ncurses.h>
 #include <string.h>
 #include <stdlib.h>
 #include "./sprites.h"
@@ -155,6 +154,11 @@ void move_player()
          }
 
          ammo -= 1;
+
+         move(LINES -1, 1);
+         printw("  ");
+         move(LINES -1, 1);
+         printw("%d", ammo);
       }      
 
       if (ammo <= 0) {
