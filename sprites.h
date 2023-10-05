@@ -102,6 +102,7 @@ void erase_player(int y, int x, int direction)
       }
 }
 
+/* Draws the enemy sprite */
 void draw_enemy(int y, int x)
 {
    attrset(ENEMY_COLOR);
@@ -110,10 +111,25 @@ void draw_enemy(int y, int x)
    attrset(DEFAULT_COLOR);
 }
 
+/* Erases the enemy sprite */
 void erase_enemy(int y, int x)
 {
    move(y, x);
    printw("  ");
+}
+
+/* Refreshes and draws the HUD */
+void update_hud(int ammo, int kills)
+{
+      move(LINES -1, 1);
+      printw("   ");
+      move(LINES -1, 1);
+      printw("%d", ammo);
+
+      move(LINES -1, COLS -1);
+      printw("   ");
+      move(LINES -1, COLS -1);
+      printw("%d", kills);
 }
 
 #endif

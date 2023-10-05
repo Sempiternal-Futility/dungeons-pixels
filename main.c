@@ -17,10 +17,7 @@ int main()
    init_pair(3, COLOR_BLUE, COLOR_BLACK);
    attrset(DEFAULT_COLOR);
 
-   move(LINES -1, 1);
-   printw("  ");
-   move(LINES -1, 1);
-   printw("%d", ammo);
+   update_hud(ammo, kills);
 
    init_pos();
    draw_enemy(enemy1.posY, enemy1.posX);

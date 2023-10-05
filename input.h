@@ -12,6 +12,7 @@ int currentDir = up; /* The current direction the player is facing */
 int ammo = 30; /* Ammo that the player has */
 int kills = 0; /* How much PAIN the player has inflicted upon others :) */
 
+/* Checks if an enemy has been hit */
 void check_hit(int missilePosY, int missilePosX);
 
 /* Sets the inital values for the global vars */
@@ -115,65 +116,77 @@ void move_player()
          }
 
          if (currentDir == up) {
+            int currentKills = kills;
             move(missilePosY, missilePosX);
-
             for (; missilePosY > 0; missilePosY--) {
-               check_hit(missilePosY, missilePosX);
-               move(missilePosY, missilePosX);
-               printw(missileChar);
-               refresh();
-               system("sleep 0.001s");
-               move(missilePosY, missilePosX);
-               printw("  ");
+               if (currentKills == kills) {
+                  check_hit(missilePosY, missilePosX);
+                  move(missilePosY, missilePosX);
+                  printw(missileChar);
+                  refresh();
+                  system("sleep 0.001s");
+                  move(missilePosY, missilePosX);
+                  printw("  ");
+               }
+               
+               else {
+                  break;
+               }
             }
          }
 
          else if (currentDir == right) {
+            int currentKills = kills;
             for (; missilePosX < COLS; missilePosX += 2) {
-               check_hit(missilePosY, missilePosX);
-               move(missilePosY, missilePosX);
-               MISSILE_RIGHT(missilePosY, missilePosX);
-               refresh();
-               system("sleep 0.001s");
-               move(missilePosY, missilePosX);
-               MISSILE_RIGHT_ERASE(missilePosY, missilePosX);
+               if (currentKills == kills) {
+                  check_hit(missilePosY, missilePosX);
+                  move(missilePosY, missilePosX);
+                  MISSILE_RIGHT(missilePosY, missilePosX);
+                  refresh();
+                  system("sleep 0.001s");
+                  move(missilePosY, missilePosX);
+                  MISSILE_RIGHT_ERASE(missilePosY, missilePosX);
+               }
             }
          }
 
          else if (currentDir == left) {
+            int currentKills = kills;
             for (; missilePosX > 0; missilePosX -= 2) {
-               check_hit(missilePosY, missilePosX);
-               move(missilePosY, missilePosX);
-               MISSILE_LEFT(missilePosY, missilePosX);
-               refresh();               
-               system("sleep 0.001s");
-               move(missilePosY, missilePosX);
-               MISSILE_LEFT_ERASE(missilePosY, missilePosX);
+               if (currentKills == kills) {
+                  check_hit(missilePosY, missilePosX);
+                  move(missilePosY, missilePosX);
+                  MISSILE_LEFT(missilePosY, missilePosX);
+                  refresh();               
+                  system("sleep 0.001s");
+                  move(missilePosY, missilePosX);
+                  MISSILE_LEFT_ERASE(missilePosY, missilePosX);
+               }
             }
          }
 
          else if (currentDir == down) {
+            int currentKills = kills;
             move(missilePosY, missilePosX);
             printw(missileChar);            
 
             for (; missilePosY < LINES; missilePosY++) {
-               check_hit(missilePosY, missilePosX);
-               move(missilePosY, missilePosX);
-               printw(missileChar);
-               refresh();
-               system("sleep 0.001s");
-               move(missilePosY, missilePosX);
-               printw("  ");
+               if (currentKills == kills) {
+                  check_hit(missilePosY, missilePosX);
+                  move(missilePosY, missilePosX);
+                  printw(missileChar);
+                  refresh();
+                  system("sleep 0.001s");
+                  move(missilePosY, missilePosX);
+                  printw("  ");
+               }
             }
          }
 
          ammo -= 1;
       }      
 
-      move(LINES -1, 1);
-      printw("  ");
-      move(LINES -1, 1);
-      printw("%d", ammo);
+      update_hud(ammo, kills);
 
       if (ammo <= 0) {
          attrset(WARNING_COLOR);
@@ -189,7 +202,6 @@ void check_hit(int missilePosY, int missilePosX)
    if (missilePosY == enemy1.posY && (missilePosX == enemy1.posX || missilePosX == enemy1.posX -1 || missilePosX == enemy1.posX +1)) {
       erase_enemy(enemy1.posY, enemy1.posX);
       kills++;
-      printw("ASDIOJAOIDJIOASJDIOAJSIODJIOASJDIOAJSOIDJAOISJDOIASJOIDAJSIODJIOASDJOAISDJOASJDOAISDJOAID");
    }
 }
 #endif
