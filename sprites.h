@@ -11,6 +11,7 @@
 #define MISSILE_LEFT(y, x) (move(y, x), printw("▗"), move(y +1, x), printw("▝")) /* Shoots missile to the left direction */
 #define MISSILE_LEFT_ERASE(y, x) (move(y, x), printw(" "), move(y +1, x), printw(" "))
 
+#include <stdlib.h>
 #include <ncurses.h>
 
 enum directions {
@@ -109,6 +110,7 @@ void draw_enemy(int y, int x)
    move(y, x);
    printw("██");
    attrset(DEFAULT_COLOR);
+   system("sleep 0.3s");
 }
 
 /* Erases the enemy sprite */
@@ -128,7 +130,7 @@ void update_hud(int ammo, int kills)
 
       move(LINES -1, COLS -1);
       printw("   ");
-      move(LINES -1, COLS -1);
+      move(LINES -1, COLS -3);
       printw("%d", kills);
 }
 
