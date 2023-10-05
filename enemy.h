@@ -22,7 +22,7 @@ void *move_enemy(void *param)
    {
       erase_enemy(enemy1.posY, enemy1.posX);
 
-      if (enemy1.posY < LINES -2 && enemy1.posY > 3) {
+      if (enemy1.posY < LINES -2 && enemy1.posY >= 3) {
          if (playerPosY > enemy1.posY) {
             enemy1.posY += 1;
          }
@@ -32,7 +32,7 @@ void *move_enemy(void *param)
          }
       }
 
-      if (enemy1.posX < COLS -2 && enemy1.posX > 3) {
+      if (enemy1.posX < COLS -2 && enemy1.posX >= 3) {
          if (playerPosX > enemy1.posX) {
             enemy1.posX += 1;
          }
