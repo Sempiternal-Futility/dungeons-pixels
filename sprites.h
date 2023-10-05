@@ -3,7 +3,9 @@
 #define SPRITES_H
 
 #define MISSILE_RIGHT(y, x) (move(y, x), printw("▖"), move(y +1, x), printw("▘")) /* Shoots missile to the right direction */
+#define MISSILE_RIGHT_ERASE(y, x) (move(y, x), printw(" "), move(y +1, x), printw(" ")) 
 #define MISSILE_LEFT(y, x) (move(y, x), printw("▗"), move(y +1, x), printw("▝")) /* Shoots missile to the left direction */
+#define MISSILE_LEFT_ERASE(y, x) (move(y, x), printw(" "), move(y +1, x), printw(" "))
 
 #include <ncurses.h>
 

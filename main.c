@@ -10,6 +10,11 @@ int main()
    curs_set(0);
    noecho();
 
+   start_color();
+   init_pair(1, COLOR_WHITE, COLOR_BLACK);
+   init_pair(2, COLOR_RED, COLOR_BLACK);
+   attrset(COLOR_PAIR(1));
+
    initPos();
    draw_player(playerPosY, playerPosX, currentDir);
    move_player();

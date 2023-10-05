@@ -3,11 +3,13 @@
 
 #include <ncurses.h>
 #include <string.h>
+#include <stdlib.h>
 #include "./sprites.h"
 
 int playerPosY = 0; /* The Y position of the player */
 int playerPosX = 0; /* The X position of the player */
 int currentDir = up; /* The current direction the player is facing */
+int ammo = 30;
 
 /* Sets the inital values for the global vars */
 void initPos()
@@ -84,7 +86,7 @@ void move_player()
          }
       }
 
-      else if (input == 32) {
+      else if (input == 32 && ammo > 0) {
          int missilePosY = playerPosY;
          int missilePosX = playerPosX;
          char missileChar[7];
@@ -103,18 +105,62 @@ void move_player()
                      break;
          }
 
-         if (currentDir == up || currentDir == down) {
+         if (currentDir == up) {
             move(missilePosY, missilePosX);
-            printw(missileChar);
+
+            for (; missilePosY > 0; missilePosY--) {
+               move(missilePosY, missilePosX);
+               printw(missileChar);
+               refresh();
+               system("sleep 0.001s");
+               move(missilePosY, missilePosX);
+               printw("  ");
+            }
          }
 
          else if (currentDir == right) {
-            MISSILE_RIGHT(missilePosY, missilePosX);
+            for (; missilePosX < COLS; missilePosX += 2) {
+               move(missilePosY, missilePosX);
+               MISSILE_RIGHT(missilePosY, missilePosX);
+               refresh();
+               system("sleep 0.001s");
+               move(missilePosY, missilePosX);
+               MISSILE_RIGHT_ERASE(missilePosY, missilePosX);
+            }
          }
 
          else if (currentDir == left) {
-            MISSILE_LEFT(missilePosY, missilePosX);
+            for (; missilePosX > 0; missilePosX -= 2) {
+               move(missilePosY, missilePosX);
+               MISSILE_LEFT(missilePosY, missilePosX);
+               refresh();               
+               system("sleep 0.001s");
+               move(missilePosY, missilePosX);
+               MISSILE_LEFT_ERASE(missilePosY, missilePosX);
+            }
          }
+
+         else if (currentDir == down) {
+            move(missilePosY, missilePosX);
+            printw(missileChar);            
+
+            for (; missilePosY < LINES; missilePosY++) {
+               move(missilePosY, missilePosX);
+               printw(missileChar);
+               refresh();
+               system("sleep 0.001s");
+               move(missilePosY, missilePosX);
+               printw("  ");
+            }
+         }
+
+         ammo -= 1;
+      }      
+
+      if (ammo <= 0) {
+         attrset(COLOR_PAIR(2));
+         draw_player(playerPosY, playerPosX, currentDir);
+         refresh();
       }
    }
 }
