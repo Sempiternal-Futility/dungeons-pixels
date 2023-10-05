@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "./sprites.h"
+#include "./enemy.h"
 
 int playerPosY = 0; /* The Y position of the player */
 int playerPosX = 0; /* The X position of the player */
@@ -15,6 +16,12 @@ void initPos()
 {
    playerPosX = COLS /2;
    playerPosY = LINES /2;
+
+   enemy1.enemyPosY = 3;
+   enemy1.enemyPosX = 10;
+
+   enemy2.enemyPosY = 7;
+   enemy2.enemyPosX = 10;
 }
 
 /* Handles player movement */
@@ -154,17 +161,18 @@ void move_player()
          }
 
          ammo -= 1;
-
-         move(LINES -1, 1);
-         printw("  ");
-         move(LINES -1, 1);
-         printw("%d", ammo);
       }      
 
+      move(LINES -1, 1);
+      printw("  ");
+      move(LINES -1, 1);
+      printw("%d", ammo);
+
       if (ammo <= 0) {
-         attrset(COLOR_PAIR(2));
+         attrset(WARNING_COLOR);
          draw_player(playerPosY, playerPosX, currentDir);
          refresh();
+         attrset(DEFAULT_COLOR);
       }
    }
 }
