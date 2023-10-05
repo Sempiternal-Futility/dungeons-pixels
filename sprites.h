@@ -110,4 +110,10 @@ void draw_enemy(int y, int x)
    attrset(DEFAULT_COLOR);
 }
 
+void erase_enemy(int y, int x)
+{
+   move(y, x);
+   printw("  ");
+}
+
 #endif

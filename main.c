@@ -2,6 +2,7 @@
 #include <locale.h>
 #include "./sprites.h"
 #include "./input.h"
+#include "enemy.h"
 
 int main()
 {
@@ -21,10 +22,9 @@ int main()
    move(LINES -1, 1);
    printw("%d", ammo);
 
-
-   initPos();
-   draw_enemy(enemy1.enemyPosY, enemy1.enemyPosX);
-   draw_enemy(enemy2.enemyPosY, enemy2.enemyPosX);
+   init_pos();
+   draw_enemy(enemy1.posY, enemy1.posX);
+   draw_enemy(enemy2.posY, enemy2.posX);
    draw_player(playerPosY, playerPosX, currentDir);
    move_player();
 
