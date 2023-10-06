@@ -22,10 +22,7 @@ int main()
    update_hud(ammo, kills);
 
    pthread_t enemyThread;
-   int *param = malloc(2 * sizeof(int));
-   param[0] = playerPosY;
-   param[1] = playerPosX;
-   pthread_create(&enemyThread, NULL, move_enemy, param);
+   pthread_create(&enemyThread, NULL, move_enemy, NULL);
 
    system("sleep 0.2s");
 
@@ -35,6 +32,5 @@ int main()
    move_player();
 
    endwin();
-   free(param);
    return 0;
 }

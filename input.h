@@ -6,8 +6,6 @@
 #include "./sprites.h"
 #include "./enemy.h"
 
-int playerPosY = 0; /* The Y position of the player */
-int playerPosX = 0; /* The X position of the player */
 int currentDir = up; /* The current direction the player is facing */
 int ammo = 30; /* Ammo that the player has */
 int kills = 0; /* How much PAIN the player has inflicted upon others :) */
@@ -186,7 +184,7 @@ void move_player()
          ammo -= 1;
       }      
 
-      update_hud(ammo, kills);
+      update_hud(ammo, kills);   
 
       if (ammo <= 0) {
          attrset(WARNING_COLOR);

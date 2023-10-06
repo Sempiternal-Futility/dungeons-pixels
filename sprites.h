@@ -14,6 +14,9 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
+int playerPosY = 0; /* The Y position of the player */
+int playerPosX = 0; /* The X position of the player */
+
 enum directions {
    up = 0,
    right = 1,
