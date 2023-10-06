@@ -21,7 +21,7 @@ void init_pos()
    playerPosX = COLS /2;
    playerPosY = LINES /2;
 
-   enemy1.posY = 3;
+   enemy1.posY = 4;
    enemy1.posX = 10;
 
    enemy2.posY = 7;
