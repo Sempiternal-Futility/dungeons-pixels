@@ -45,6 +45,11 @@ void *move_enemy()
       }
    }
 
+   if (playerPosY == enemy1.posY && playerPosX == enemy1.posX) 
+   {
+      gameover_scr();
+   }
+
    return (void *) 0;
 }
 

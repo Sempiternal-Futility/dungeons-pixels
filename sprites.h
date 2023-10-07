@@ -13,9 +13,11 @@
 
 #include <stdlib.h>
 #include <ncurses.h>
+#include <stdbool.h>
 
 int playerPosY = 0; /* The Y position of the player */
 int playerPosX = 0; /* The X position of the player */
+bool game_over = false; /* If the player dies, this becomes true */
 
 enum directions {
    up = 0,
@@ -113,7 +115,7 @@ void draw_enemy(int y, int x)
    move(y, x);
    printw("██");
    attrset(DEFAULT_COLOR);
-   system("sleep 0.3s");
+   system("sleep 0.1s");
 }
 
 /* Erases the enemy sprite */
@@ -135,6 +137,14 @@ void update_hud(int ammo, int kills)
       printw("   ");
       move(LINES -1, COLS -3);
       printw("%d", kills);
+}
+
+void gameover_scr()
+{
+   clear();
+   move(LINES /2, (COLS /2) -4);
+   printw("GAME OVER");
+   game_over = true;
 }
 
 #endif
