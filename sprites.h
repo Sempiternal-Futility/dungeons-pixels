@@ -142,8 +142,37 @@ void update_hud(int ammo, int kills)
 void gameover_scr()
 {
    clear();
-   move(LINES /2, (COLS /2) -4);
-   printw("GAME OVER");
+   system("sleep 0.2s"); // This is here so that the "GAME OVER" message doesn't get displayed weird
+   clear();
+
+   move((LINES /2) -6, (COLS /2) -19);
+   printw(" ██████╗  █████╗ ███╗   ███╗███████╗");
+   move((LINES /2) -5, (COLS /2) -19);
+   printw("██╔════╝ ██╔══██╗████╗ ████║██╔════╝");
+   move((LINES /2) -4, (COLS /2) -19);
+   printw("██║  ███╗███████║██╔████╔██║█████╗  ");
+   move((LINES /2) -3, (COLS /2) -19);
+   printw("██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ");
+   move((LINES /2) -2, (COLS /2) -19);
+   printw("╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗");
+   move((LINES /2) -1, (COLS /2) -19);
+   printw(" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝");
+   move((LINES /2), (COLS /2) -19);
+   printw("                                    ");
+
+   move((LINES /2) +1, (COLS /2) -19);
+   printw(" ██████╗ ██╗   ██╗███████╗██████╗   ");
+   move((LINES /2) +2, (COLS /2) -19);
+   printw("██╔═══██╗██║   ██║██╔════╝██╔══██╗  ");
+   move((LINES /2) +3, (COLS /2) -19);
+   printw("██║   ██║██║   ██║█████╗  ██████╔╝  ");
+   move((LINES /2) +4, (COLS /2) -19);
+   printw("██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗  ");
+   move((LINES /2) +5, (COLS /2) -19);
+   printw("╚██████╔╝ ╚████╔╝ ███████╗██║  ██║  ");
+   move((LINES /2) +6, (COLS /2) -19);
+   printw(" ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝  ");
+
    game_over = true;
 }
 
