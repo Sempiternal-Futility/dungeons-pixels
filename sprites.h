@@ -115,7 +115,7 @@ void draw_enemy(int y, int x)
    move(y, x);
    printw("██");
    attrset(DEFAULT_COLOR);
-   system("sleep 0.1s");
+   system("sleep 0.06s");
 }
 
 /* Erases the enemy sprite */

@@ -42,12 +42,17 @@ void *move_enemy()
 
          draw_enemy(enemy1.posY, enemy1.posX);
          refresh();
-      }
-   }
 
-   if (playerPosY == enemy1.posY && playerPosX == enemy1.posX) 
-   {
-      gameover_scr();
+         if ((playerPosY == enemy1.posY && playerPosX == enemy1.posX)
+         || (playerPosY == enemy1.posY && playerPosX +1 == enemy1.posX)
+         || (playerPosY == enemy1.posY && playerPosX -1 == enemy1.posX)
+         || (playerPosY == enemy1.posY && playerPosX +2 == enemy1.posX)
+         || (playerPosY == enemy1.posY && playerPosX -2 == enemy1.posX))
+         {
+            gameover_scr();
+            break;
+         }
+      }
    }
 
    return (void *) 0;
