@@ -29,8 +29,10 @@ int main()
    draw_enemy(enemy1.posY, enemy1.posX);
    draw_enemy(enemy2.posY, enemy2.posX);
    draw_player(playerPosY, playerPosX, currentDir);
+   system("xset r rate 1 20");
    move_player();
 
+   system("xset r rate");
    endwin();
    return 0;
 }
