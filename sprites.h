@@ -18,6 +18,7 @@
 int playerPosY = 0; /* The Y position of the player */
 int playerPosX = 0; /* The X position of the player */
 bool game_over = false; /* If the player dies, this becomes true */
+bool player_move = false;
 
 enum directions {
    up = 0,
@@ -115,7 +116,7 @@ void draw_enemy(int y, int x)
    move(y, x);
    printw("██");
    attrset(DEFAULT_COLOR);
-   system("sleep 0.06s");
+   // system("sleep 0.06s");
 }
 
 /* Erases the enemy sprite */
