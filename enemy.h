@@ -21,17 +21,17 @@ void *move_enemy()
          if (player_move == false) {
             erase_enemy(enemy1.posY, enemy1.posX);
 
-            if (enemy1.posY < LINES -2 && enemy1.posY >= 2) {
+            if (enemy1.posY < LINES && enemy1.posY >= 0) {
                if (playerPosY > enemy1.posY) {
-                  enemy1.posY += 2;
+                  enemy1.posY += 1;
                }
 
                else if (playerPosY < enemy1.posY) {
-                  enemy1.posY -= 2;
+                  enemy1.posY -= 1;
                }
             }
 
-            if (enemy1.posX < COLS -2 && enemy1.posX >= 3) {
+            if (enemy1.posX < COLS && enemy1.posX >= 0) {
                if (playerPosX > enemy1.posX) {
                   enemy1.posX += 2;
                }
@@ -56,7 +56,7 @@ void *move_enemy()
          }
 
          player_move = true;
-         system("sleep 0.3s");
+         system("sleep 0.19s");
          player_move = false;
       }
    }
